@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--we are using app:showAsAction="ifRoom" so that share
+        button is added in toolbar. -->
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_baseline_person_pin_24"
+        android:title="PROFILE"
+        app:showAsAction="ifRoom" />
+
+</menu>
