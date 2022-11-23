@@ -83,16 +83,37 @@
                 android:textColor="#ffffffff"
                 android:textSize="20sp" />
 
-            <ImageView
-                android:id="@+id/IVPreviewImage"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_below="@id/BSelectImage"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="74dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="27dp"
-                android:src="@drawable/ic_launcher_background" />
+                android:gravity="center">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/bt_previous"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_navigate_before_24"
+                    />
+
+                <ImageSwitcher
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:id="@+id/image_switcher"
+                    />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/bt_next"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_navigate_next_24"
+                    />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView6"

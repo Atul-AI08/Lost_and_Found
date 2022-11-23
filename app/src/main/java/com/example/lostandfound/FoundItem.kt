@@ -1,25 +1,62 @@
 package com.example.lostandfound
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.animation.AnimationUtils
+import android.widget.*
 import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ListResult
+import kotlinx.android.synthetic.main.activity_found_item.*
 
 class FoundItem : AppCompatActivity() {
+    private var imageList : ArrayList<Uri>? = null
+    private var position = 0
     private lateinit var db : FirebaseFirestore
     private var storageRef = FirebaseStorage.getInstance().reference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_found_item)
+        imageList = ArrayList()
         val id = intent.getStringExtra("id").toString()
-        var user = ""
         db = FirebaseFirestore.getInstance()
+        var user = ""
+        image_switcher?.setFactory { ImageView(applicationContext) }
+
+        val imgIn = AnimationUtils.loadAnimation(
+            this, android.R.anim.slide_in_left)
+        image_switcher?.inAnimation = imgIn
+
+        val imgOut = AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right)
+        image_switcher?.outAnimation = imgOut
+
+        val prev = findViewById<ImageButton>(R.id.bt_previous)
+        prev.setOnClickListener {
+            if (position > 0){
+                position--
+                Glide.with(this).load(imageList!![position]).into(image_switcher.currentView as ImageView)
+            }
+            else{
+                Toast.makeText(this, "No More images...", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val next = findViewById<ImageButton>(R.id.bt_next)
+        next.setOnClickListener {
+            if (position < imageList!!.size-1){
+                position++
+                Glide.with(this).load(imageList!![position]).into(image_switcher.currentView as ImageView)
+            }
+            else{
+                Toast.makeText(this, "No More images...", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         db.collection("Lost_Items").document(id)
             .get().addOnSuccessListener { document ->
                 val item = document["item"].toString()
@@ -30,12 +67,15 @@ class FoundItem : AppCompatActivity() {
                 user = document["user"].toString()
                 val image = findViewById<ImageView>(R.id.IVPreviewImage)
                 val imageRef = storageRef.child("Lost_Items/$id")
-                imageRef.downloadUrl.addOnSuccessListener {
-                    val imageUrl = it.toString()
-                    Glide.with(this).load(imageUrl).into(image)
-                }.addOnFailureListener {
-                    Log.d("TAG", "Image download failed")
-                }
+                imageRef.listAll().addOnSuccessListener(OnSuccessListener<ListResult> { listResult ->
+                    for (file in listResult.items) {
+                        file.downloadUrl.addOnSuccessListener { uri ->
+                            imageList!!.add(uri)
+                            Glide.with(this).load(imageList!![position]).into(image_switcher.currentView as ImageView)
+                            Log.d("img", "$uri")
+                        }
+                    }
+                })
                 findViewById<TextView>(R.id.textView2).text = item
                 findViewById<TextView>(R.id.textView4).text = location
                 findViewById<TextView>(R.id.textView7).text = desc
@@ -49,7 +89,7 @@ class FoundItem : AppCompatActivity() {
                         val uid = document["uId"].toString()
                         val uEmail = document["email"].toString()
                         if (user == uid){
-                            val email = Array<String>(1){uEmail}
+                            val email = Array(1){uEmail}
                             val intent = Intent(Intent.ACTION_SEND)
                             intent.type = "text/html"
                             intent.putExtra(Intent.EXTRA_EMAIL, email)
@@ -58,7 +98,6 @@ class FoundItem : AppCompatActivity() {
                             startActivity(Intent.createChooser(intent, "Send Email"))
                         }
                     }
-
                 }
         }
     }

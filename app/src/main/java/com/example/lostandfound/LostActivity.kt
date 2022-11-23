@@ -8,10 +8,8 @@ import android.net.Uri
 import android.os.Build.*
 import android.os.Bundle
 import android.util.Log
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.TimePicker
-import android.widget.Toast
+import android.view.animation.AnimationUtils
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -19,14 +17,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_lost.*
 import kotlinx.android.synthetic.main.activity_lost.BSelectImage
-import kotlinx.android.synthetic.main.activity_lost.IVPreviewImage
+import kotlinx.android.synthetic.main.activity_lost.image_switcher
 import kotlinx.android.synthetic.main.activity_lost.submit
 import java.util.*
 import kotlin.collections.HashMap
 
 
 class LostActivity : AppCompatActivity() {
-    private var image: Uri? = null
+    private var imageList : ArrayList<Uri?>? = null
+    private var position = 0
     private var storageRef = FirebaseStorage.getInstance().reference
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var productId = ""
@@ -34,7 +33,8 @@ class LostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lost)
-
+        imageList = ArrayList()
+        image_switcher?.setFactory { ImageView(applicationContext) }
         BSelectImage.setOnClickListener{
             if (VERSION.SDK_INT >= VERSION_CODES.M){
                 if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
@@ -64,7 +64,35 @@ class LostActivity : AppCompatActivity() {
         timePicker.setOnTimeChangedListener{_,hour,minute ->
             time = "$hour : $minute"
         }
+        val imgIn = AnimationUtils.loadAnimation(
+            this, android.R.anim.slide_in_left)
+        image_switcher?.inAnimation = imgIn
 
+        val imgOut = AnimationUtils.loadAnimation(
+            this, android.R.anim.slide_out_right)
+        image_switcher?.outAnimation = imgOut
+
+        val prev = findViewById<ImageButton>(R.id.bt_previous)
+        prev.setOnClickListener {
+            if (position > 0){
+                position--
+                image_switcher.setImageURI(imageList!![position])
+            }
+            else{
+                Toast.makeText(this, "No More images...", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val next = findViewById<ImageButton>(R.id.bt_next)
+        next.setOnClickListener {
+            if (position < imageList!!.size-1){
+                position++
+                image_switcher.setImageURI(imageList!![position])
+            }
+            else{
+                Toast.makeText(this, "No More images...", Toast.LENGTH_SHORT).show()
+            }
+        }
         submit.setOnClickListener{
             val item = findViewById<EditText>(R.id.item).text.toString()
             val desc = findViewById<EditText>(R.id.desc).text.toString()
@@ -84,14 +112,21 @@ class LostActivity : AppCompatActivity() {
                     val data = HashMap<String, Any>()
                     data["image_id"] = productId
                     db.collection("Lost_Items").document(productId).update(data)
-                    val imageRef = storageRef.child("Lost_Items/${productId}")
-                    imageRef.putFile(image!!)
-                        .addOnSuccessListener {
-                            Log.d("TAG", "Image uploaded successfully")
+                    val count = imageList!!.size
+                    if (count>0){
+                        for (i in 0 until count){
+                            val imageRef = storageRef.child("Lost_Items/${productId}/${productId}_$i")
+                            imageList!![i]?.let { it1 ->
+                                imageRef.putFile(it1)
+                                    .addOnSuccessListener {
+                                        Log.d("TAG", "Image uploaded successfully")
+                                    }
+                                    .addOnFailureListener {
+                                        Log.d("TAG", "Image upload failed")
+                                    }
+                            }
                         }
-                        .addOnFailureListener {
-                            Log.d("TAG", "Image upload failed")
-                        }
+                    }
                     val intent = Intent(this, HomePage::class.java)
                     startActivity(intent)
                 }
@@ -102,21 +137,38 @@ class LostActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val IMAGE_PICK_CODE = 1000
-        private val PERMISSION_CODE = 1001
+        private const val IMAGE_PICK_CODE = 1000
+        private const val PERMISSION_CODE = 1001
     }
 
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+        intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK) {
-            image = data?.data
-            IVPreviewImage.setImageURI(data?.data)
+        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK){
+
+            if (data!!.clipData != null) {
+                val count = data.clipData?.itemCount
+                for (i in 0 until count!!) {
+                    val imageUri = data.clipData!!.getItemAt(i).uri
+                    imageList!!.add(imageUri)
+                    Log.d("img", "$imageUri")
+                }
+                image_switcher.setImageURI(imageList!![0])
+                position = 0
+
+            } else if (data.data != null) {
+                val imageUri = data.data
+                imageList!!.add(imageUri)
+                image_switcher.setImageURI(imageList!![0])
+                position = 0
+            }
         }
     }
 
@@ -124,7 +176,7 @@ class LostActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when(requestCode){
             PERMISSION_CODE -> {
-                if (grantResults.size >0 && grantResults[0] ==
+                if (grantResults.isNotEmpty() && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED){
                     pickImageFromGallery()
                 }

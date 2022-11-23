@@ -40,11 +40,9 @@ class HomePage : AppCompatActivity() {
             startActivity(intent)
         }
         findViewById<Button>(R.id.button6).setOnClickListener {
-            val intent = Intent(this, Test2::class.java)
-            startActivity(intent)
 //            FirebaseAuth.getInstance().signOut()
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(this, test::class.java)
+            startActivity(intent)
         }
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

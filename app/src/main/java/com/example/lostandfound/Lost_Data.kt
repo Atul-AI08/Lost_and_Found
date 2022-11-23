@@ -41,12 +41,12 @@ class Lost_Data : AppCompatActivity() {
                     val desc = document["item"].toString()
                     val location = document["location"].toString()
                     val date = document["date"].toString()
-                    val imageRef = storageRef.child("Lost_Items/$id")
+                    val imageRef = storageRef.child("Lost_Items/$id/${id}_0")
                     imageRef.downloadUrl.addOnSuccessListener {
                         val imageUrl = it.toString()
                         data.add(ItemsViewModel(imageUrl, id, desc, location,date))
                         foundAdapter.notifyDataSetChanged()
-                        Log.d("abd", "$imageUrl")
+                        Log.d("abd", imageUrl)
                     }.addOnFailureListener {
                         Log.d("abd", "Image download failed")
                     }

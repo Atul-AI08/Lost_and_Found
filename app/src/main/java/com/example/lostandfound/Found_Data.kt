@@ -41,7 +41,7 @@ class Found_Data : AppCompatActivity() {
                     val desc = document["item"].toString()
                     val location = document["location"].toString()
                     val date = document["date"].toString()
-                    val imageRef = storageRef.child("Found_Items/$id")
+                    val imageRef = storageRef.child("Found_Items/$id/${id}_0")
                     imageRef.downloadUrl.addOnSuccessListener {
                         val imageUrl = it.toString()
                         data.add(ItemsViewModel(imageUrl, id, desc, location,date))
