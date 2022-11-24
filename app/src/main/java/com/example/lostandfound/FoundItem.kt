@@ -65,14 +65,12 @@ class FoundItem : AppCompatActivity() {
                 val date = document["date"].toString()
                 val time = document["time"].toString()
                 user = document["user"].toString()
-                val image = findViewById<ImageView>(R.id.IVPreviewImage)
                 val imageRef = storageRef.child("Lost_Items/$id")
                 imageRef.listAll().addOnSuccessListener(OnSuccessListener<ListResult> { listResult ->
                     for (file in listResult.items) {
                         file.downloadUrl.addOnSuccessListener { uri ->
                             imageList!!.add(uri)
                             Glide.with(this).load(imageList!![position]).into(image_switcher.currentView as ImageView)
-                            Log.d("img", "$uri")
                         }
                     }
                 })

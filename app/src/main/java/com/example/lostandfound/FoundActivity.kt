@@ -48,7 +48,7 @@ class FoundActivity : AppCompatActivity() {
                 pickImageFromGallery()
             }
         }
-        var date = ""
+        var date = getCurrentDate()
         val datePicker = findViewById<DatePicker>(R.id.date_Picker)
         val today = Calendar.getInstance()
         datePicker.init(today.get(Calendar.YEAR), today.get(Calendar.MONTH),
@@ -57,7 +57,7 @@ class FoundActivity : AppCompatActivity() {
             date = "$day/$month/$year"
         }
 
-        var time = ""
+        var time = getCurrentTime()
         val timePicker = findViewById<TimePicker>(R.id.timePicker)
         timePicker.setOnTimeChangedListener{_,hour,minute ->
             time = "$hour : $minute"
@@ -77,7 +77,7 @@ class FoundActivity : AppCompatActivity() {
                 image_switcher.setImageURI(imageList!![position])
             }
             else{
-                Toast.makeText(this, "No More images...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No More images", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -88,7 +88,7 @@ class FoundActivity : AppCompatActivity() {
                 image_switcher.setImageURI(imageList!![position])
             }
             else{
-                Toast.makeText(this, "No More images...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No More images", Toast.LENGTH_SHORT).show()
             }
         }
         submit.setOnClickListener{
@@ -133,7 +133,21 @@ class FoundActivity : AppCompatActivity() {
                 }
         }
     }
-
+    @RequiresApi(VERSION_CODES.N)
+    fun getCurrentDate(): String {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        return "$day/$month/$year"
+    }
+    @RequiresApi(VERSION_CODES.N)
+    fun getCurrentTime(): String {
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR_OF_DAY)
+        val minute = c.get(Calendar.MINUTE)
+        return "$hour:$minute"
+    }
     companion object {
         private const val IMAGE_PICK_CODE = 1000
         private const val PERMISSION_CODE = 1001
