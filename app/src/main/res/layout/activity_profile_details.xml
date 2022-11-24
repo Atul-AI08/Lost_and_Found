@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img2"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".ProfileDetails">
+    <ScrollView
+        android:id="@+id/alphabet_horizon_Scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="74dp"
+                android:layout_marginBottom="37dp"
+                android:gravity="center"
+                android:text="Enter your details"
+                android:textColor="#ffffffff"
+                android:textSize="34sp" />
+
+            <ImageView
+                android:id="@+id/IVPreviewImage"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                tools:background="@tools:sample/backgrounds/scenic"
+                android:layout_marginStart="46dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="74dp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/BSelectImage"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginStart="96dp"
+                android:background="@drawable/bg"
+                android:text="SELECT IMAGE"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="16dp"
+                android:hint="Name"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/roll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="16dp"
+                android:layout_marginTop="16dp"
+                android:hint="Roll No."
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="16dp"
+                android:layout_marginTop="16dp"
+                android:hint="Phone"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_email_24"
+                android:drawablePadding="16dp"
+                android:layout_marginTop="16dp"
+                android:hint="Email"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="126dp"
+                android:background="@drawable/bg"
+                android:layout_marginTop="16dp"
+                android:text="SUBMIT"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/blank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text=""
+                android:textColor="#9affffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/blank2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text=""
+                android:textColor="#9affffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

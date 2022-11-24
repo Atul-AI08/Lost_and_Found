@@ -12,13 +12,14 @@ import com.google.firebase.ktx.Firebase
 
 
 class HomePage : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
         val lost = findViewById<Button>(R.id.button1)
         val found = findViewById<Button>(R.id.button2)
         val lost_database = findViewById<Button>(R.id.button3)
-
+        auth = Firebase.auth
         lost.setOnClickListener{
             val intent = Intent(this, LostActivity::class.java)
             startActivity(intent)
@@ -40,8 +41,8 @@ class HomePage : AppCompatActivity() {
             startActivity(intent)
         }
         findViewById<Button>(R.id.button6).setOnClickListener {
-//            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, test::class.java)
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
@@ -50,7 +51,13 @@ class HomePage : AppCompatActivity() {
 
         return super.onCreateOptionsMenu(menu)
     }
-
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if(currentUser == null) {
+            finish()
+        }
+    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         R.id.profile -> {
             val id = Firebase.auth.currentUser.toString()
