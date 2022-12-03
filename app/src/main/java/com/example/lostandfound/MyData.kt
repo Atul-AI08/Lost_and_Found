@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
@@ -47,7 +46,7 @@ class MyData : AppCompatActivity() {
                     val location = document["location"].toString()
                     val date = document["date"].toString()
                     val type = "L"
-                    val imageRef = storageRef.child("Lost_Items/$id")
+                    val imageRef = storageRef.child("Lost_Items/$id/${id}_0")
                     if (user == cur) {
                         imageRef.downloadUrl.addOnSuccessListener {
                             val imageUrl = it.toString()
@@ -69,11 +68,11 @@ class MyData : AppCompatActivity() {
                     val cur = Firebase.auth.currentUser?.uid
                     val user = document["user"].toString()
                     val id = document["image_id"].toString()
-                    val desc = "Found:" + document["item"].toString()
+                    val desc = "Found: " + document["item"].toString()
                     val location = document["location"].toString()
                     val date = document["date"].toString()
                     val type = "F"
-                    val imageRef = storageRef.child("Lost_Items/$id")
+                    val imageRef = storageRef.child("Found_Items/$id/${id}_0")
                     if (user == cur) {
                         imageRef.downloadUrl.addOnSuccessListener {
                             val imageUrl = it.toString()

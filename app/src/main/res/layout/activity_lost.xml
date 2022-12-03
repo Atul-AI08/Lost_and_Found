@@ -29,7 +29,7 @@
                 android:layout_marginBottom="67dp"
                 android:gravity="center"
                 android:text="Enter details of item"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="34sp" />
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name of item :"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <EditText
@@ -45,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="27dp"
+                android:textColor="@android:color/white"
                 android:drawablePadding="16dp"
                 android:inputType="textPersonName"
                 android:textSize="20sp" />
@@ -54,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Location where you lost item :"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <EditText
@@ -62,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="27dp"
+                android:textColor="@android:color/white"
                 android:drawablePadding="16dp"
                 android:inputType="textPersonName"
                 android:textSize="20sp" />
@@ -71,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Image of item :"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -121,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description of item :"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <EditText
@@ -129,6 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="16dp"
+                android:textColor="@android:color/white"
                 android:inputType="textPersonName"
                 android:layout_marginBottom="27dp"
                 android:textSize="20sp" />
@@ -137,12 +140,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time when you lost item :"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <TimePicker
                 android:id="@+id/timePicker"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="27dp"
                 android:timePickerMode="spinner"/>
@@ -152,13 +155,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date when you lost item:"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <DatePicker
                 android:id="@+id/date_Picker"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="27dp"
                 android:datePickerMode = "spinner"
                 android:calendarViewShown="false"/>
 
@@ -167,28 +171,11 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:layout_marginBottom="120dp"
                 android:background="@drawable/bg"
                 android:text="SUBMIT"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/blank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text=""
-                android:textColor="#9affffff"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/blank2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text=""
-                android:textColor="#9affffff"
-                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>

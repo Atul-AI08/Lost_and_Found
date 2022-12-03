@@ -10,22 +10,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="154dp"
-        android:layout_marginBottom="100dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="32dp"
         android:paddingRight="32dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="74dp"
-            android:layout_marginBottom="37dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="143dp"
+            android:layout_marginBottom="97dp"
             android:gravity="center"
-            android:text="Enter your credentials"
-            android:textColor="#ffffffff"
+            android:text="Create Account"
+            android:textColor="@color/white"
             android:textSize="34sp" />
 
         <EditText
@@ -72,29 +69,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:background="@drawable/bg"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="26dp"
             android:text="Sign Up"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
-        <TextView
-            android:id="@+id/blank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text=""
-            android:textColor="#9affffff"
-            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/blank2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text=""
-            android:textColor="#9affffff"
-            android:textSize="20sp" />
     </LinearLayout>
 
 </RelativeLayout>

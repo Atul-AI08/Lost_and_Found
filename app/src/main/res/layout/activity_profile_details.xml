@@ -23,13 +23,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="13dp"
-                android:layout_marginEnd="74dp"
                 android:layout_marginBottom="37dp"
                 android:gravity="center"
                 android:text="Enter your details"
-                android:textColor="#ffffffff"
+                android:textColor="@color/white"
                 android:textSize="34sp" />
 
             <ImageView
@@ -37,15 +36,15 @@
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 tools:background="@tools:sample/backgrounds/scenic"
-                android:layout_marginStart="46dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="74dp" />
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/BSelectImage"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:layout_marginStart="96dp"
+                android:layout_gravity="center"
                 android:background="@drawable/bg"
                 android:text="SELECT IMAGE"
                 android:textColor="@android:color/white"
@@ -97,31 +96,16 @@
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="126dp"
+                android:layout_gravity="center"
                 android:background="@drawable/bg"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="120dp"
                 android:text="SUBMIT"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-            <TextView
-                android:id="@+id/blank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text=""
-                android:textColor="#9affffff"
-                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/blank2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text=""
-                android:textColor="#9affffff"
-                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
 

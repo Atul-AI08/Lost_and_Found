@@ -16,9 +16,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_lost.*
-import kotlinx.android.synthetic.main.activity_lost.BSelectImage
-import kotlinx.android.synthetic.main.activity_lost.image_switcher
-import kotlinx.android.synthetic.main.activity_lost.submit
 import java.util.*
 import kotlin.collections.HashMap
 

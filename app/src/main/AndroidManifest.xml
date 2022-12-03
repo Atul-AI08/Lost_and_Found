@@ -23,13 +23,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Test2"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".MyItem"
             android:exported="false">
             <meta-data
@@ -59,13 +52,6 @@
         </activity>
         <activity
             android:name=".FoundItem"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".test"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

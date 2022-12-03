@@ -13,10 +13,10 @@ import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var etEmail: EditText
+    private lateinit var etEmail: EditText
     private lateinit var etPass: EditText
     private lateinit var btnSignUp: Button
-    lateinit var tvRedirectLogin: TextView
+    private lateinit var tvRedirectLogin: Button
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         tvRedirectLogin.setOnClickListener {
             login()
         }
-        findViewById<Button>(R.id.forgot).setOnClickListener {
+        findViewById<TextView>(R.id.forgot).setOnClickListener {
             auth.sendPasswordResetEmail(etEmail.text.toString())
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {

@@ -23,13 +23,12 @@
             <TextView
                 android:layout_width="230dp"
                 android:layout_height="61dp"
-                android:layout_marginStart="65dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="13dp"
-                android:layout_marginEnd="74dp"
                 android:layout_marginBottom="67dp"
                 android:gravity="center"
                 android:text="Lost Item"
-                android:textColor="#ffffffff"
+                android:textColor="@android:color/white"
                 android:textSize="34sp" />
 
             <TextView
@@ -37,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name of item :"
-                android:textColor="#ffffffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <TextView
@@ -48,7 +47,7 @@
                 android:layout_marginBottom="27dp"
                 android:text="Name of item"
                 android:drawablePadding="16dp"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <TextView
@@ -56,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Location where item was lost :"
-                android:textColor="#ffffffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <TextView
@@ -65,9 +64,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="27dp"
-                android:text="location"
+                android:text="Location"
                 android:drawablePadding="16dp"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <TextView
@@ -75,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Image of item :"
-                android:textColor="#ffffffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -115,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description of item :"
-                android:textColor="#ffffffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <TextView
@@ -126,7 +125,7 @@
                 android:layout_marginBottom="27dp"
                 android:text="Description"
                 android:drawablePadding="16dp"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
             <TextView
                 android:id="@+id/textView8"
@@ -142,16 +141,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="27dp"
-                android:text="date"
+                android:text="Date"
                 android:drawablePadding="16dp"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time when item was lost:"
-                android:textColor="#ffffffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <TextView
@@ -159,17 +158,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="27dp"
-                android:text="time"
+                android:layout_marginBottom="17dp"
+                android:text="Time"
                 android:drawablePadding="16dp"
-                android:textColor="#9affffff"
+                android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/submit"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="22dp"
                 android:layout_marginBottom="67dp"
                 android:background="@drawable/bg"
                 android:text="Found Item"

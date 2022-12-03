@@ -65,7 +65,6 @@ class Claim : AppCompatActivity() {
                 val date = document["date"].toString()
                 val time = document["time"].toString()
                 user = document["user"].toString()
-                val image = findViewById<ImageView>(R.id.IVPreviewImage)
                 val imageRef = storageRef.child("Found_Items/$id")
                 imageRef.listAll().addOnSuccessListener(OnSuccessListener<ListResult> { listResult ->
                     for (file in listResult.items) {

@@ -18,7 +18,6 @@ class HomePage : AppCompatActivity() {
         setContentView(R.layout.activity_home_page)
         val lost = findViewById<Button>(R.id.button1)
         val found = findViewById<Button>(R.id.button2)
-        val lost_database = findViewById<Button>(R.id.button3)
         auth = Firebase.auth
         lost.setOnClickListener{
             val intent = Intent(this, LostActivity::class.java)
@@ -28,7 +27,7 @@ class HomePage : AppCompatActivity() {
             val intent = Intent(this, FoundActivity::class.java)
             startActivity(intent)
         }
-        lost_database.setOnClickListener {
+        findViewById<Button>(R.id.button3).setOnClickListener {
             val intent = Intent(this, Lost_Data::class.java)
             startActivity(intent)
         }
@@ -60,7 +59,6 @@ class HomePage : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         R.id.profile -> {
-            val id = Firebase.auth.currentUser.toString()
             val intent = Intent(this, Profile::class.java)
             startActivity(intent)
             true

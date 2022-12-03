@@ -16,9 +16,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_found.*
-import kotlinx.android.synthetic.main.activity_found.BSelectImage
-import kotlinx.android.synthetic.main.activity_found.image_switcher
-import kotlinx.android.synthetic.main.activity_found.submit
 import java.util.ArrayList
 
 class FoundActivity : AppCompatActivity() {

@@ -17,7 +17,6 @@ class Profile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        val id = Firebase.auth.currentUser.toString()
         db = FirebaseFirestore.getInstance()
         db.collection("Users").get().addOnSuccessListener {
             val user = Firebase.auth.currentUser?.uid.toString()

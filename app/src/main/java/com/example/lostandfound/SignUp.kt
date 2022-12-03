@@ -31,6 +31,10 @@ class SignUp : AppCompatActivity() {
             signUpUser()
         }
     }
+    private fun isValidEmail(toCheck: String): Boolean {
+        val regex = "[a-zA-Z0-9._-]+@iitp.ac.in".toRegex()
+        return toCheck.matches(regex)
+    }
     private fun signUpUser() {
         val email = etEmail
         val pass = etPass
@@ -38,6 +42,9 @@ class SignUp : AppCompatActivity() {
         Log.d("xyz", "$email $pass $cnfpass")
         if (email.isBlank() || pass.isBlank()) {
             Toast.makeText(this, "Email and Password can't be blank", Toast.LENGTH_SHORT).show()
+        }
+        else if(!isValidEmail(email)){
+            Toast.makeText(this, "Enter your IITP mail", Toast.LENGTH_SHORT).show()
         }
         else if (pass != cnfpass)
             Toast.makeText(this, "Password and Confirm Password are not same", Toast.LENGTH_SHORT).show()
