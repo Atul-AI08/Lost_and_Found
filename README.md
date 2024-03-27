@@ -1,5 +1,10 @@
 # Lost and Found App
 
+![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
+![Android Studio](https://img.shields.io/badge/android%20studio-346ac1?style=for-the-badge&logo=android%20studio&logoColor=white)
+
+---
+
 The Lost and Found App is a user-friendly mobile application designed for IITP students to streamline the process of reporting lost items, connecting users with their rightful belongings, and facilitating item recovery.
 
 Built with efficiency and convenience in mind, this app aims to provide a seamless experience for both users who have lost their belongings and individuals who have found lost items. Leveraging cutting-edge technologies and a robust backend infrastructure, the Lost and Found App allows users to report their lost items, browse through found items, and easily connect with the respective owners.
