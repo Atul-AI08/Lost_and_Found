@@ -13,9 +13,10 @@ The app enables swift identification and retrieval of lost items, fostering a re
 
 ## Screenshots
 
-![Screenshot 1](ss1.jpeg)
-
-![Screenshot 2](ss2.jpeg)
+<p float="left">
+  <img src="ss1.jpeg" width="49%" />
+  <img src="ss2.jpeg" width="49%" /> 
+</p>
 
 ## Technologies Used
 
